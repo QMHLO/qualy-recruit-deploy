@@ -5,6 +5,8 @@ import { getUnixTime } from "date-fns";
 import { Button, Flex } from "antd";
 import { toast } from "react-toastify";
 import Loading from "../components/Loading";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 const database = getDatabase(app);
 
@@ -71,12 +73,33 @@ function Posts() {
     }
   };
 
+  // const handleDeleteUser = (id) => {
+  //   // Delete user from Firebase Realtime Database
+  //   window.confirm("Are you sure want to delete this post?");
+  //   const dataRef = ref(database, `posts/${id}`);
+  //   remove(dataRef);
+  //   toast.error("Your post was deleted.");
+  // };
   const handleDeleteUser = (id) => {
-    // Delete user from Firebase Realtime Database
-    window.confirm("Are you sure want to delete this post?");
-    const dataRef = ref(database, `posts/${id}`);
-    remove(dataRef);
-    toast.error("Your post was deleted.");
+    confirmAlert({
+      title: "Are you sure to delete this post?",
+      message: "",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            // Delete user from Firebase Realtime Database
+            const dataRef = ref(database, `posts/${id}`);
+            remove(dataRef);
+            toast.error("Your post was deleted.");
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {},
+        },
+      ],
+    });
   };
 
   const handleSelectUser = (user) => {
