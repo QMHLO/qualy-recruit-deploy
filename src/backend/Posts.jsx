@@ -73,6 +73,7 @@ function Posts() {
 
   const handleDeleteUser = (id) => {
     // Delete user from Firebase Realtime Database
+    window.confirm("Are you sure want to delete this post?");
     const dataRef = ref(database, `posts/${id}`);
     remove(dataRef);
     toast.error("Your post was deleted.");
