@@ -10,7 +10,7 @@ import Loading from "./Loading";
 function Header() {
   const [toggle, setToggle] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const isMobile = window.innerWidth <= 768;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const { adminUser, dispatch } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 
@@ -50,6 +50,17 @@ function Header() {
       document.body.classList.remove("fixed");
     };
   }, [showForm]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const menuAnimation = {
     hidden: {
