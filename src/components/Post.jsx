@@ -34,7 +34,8 @@ function CompanyData() {
               <span>MMK　{post.value}〜</span>
             </div>
             <div className="right">
-              Recruitment deadline<span className="date">{format(new Date(post.date), "yyyy.M.dd")}</span>
+              {/* Recruitment deadline<span className="date">{format(new Date(post.date), "yyyy.M.dd")}</span> */}
+              Recruitment deadline<span className="date">{post.date}</span>
             </div>
           </div>
           <p className="detail">{post.description}</p>
