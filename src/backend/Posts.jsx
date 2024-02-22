@@ -9,6 +9,7 @@ import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { Modal, message } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
+import ValidationAdmin from "./ValidationAdmin";
 
 const database = getDatabase(app);
 
@@ -37,6 +38,17 @@ function Posts() {
       setLoading(false);
     });
   }, [database]);
+
+  const handleValidation = (e) => {
+    e.preventDefault();
+    const validationErrors = ValidationAdmin({ title, value, date, description });
+    if (Object.keys(validationErrors).length === 0) {
+      // If no validation errors, send the email
+      selectedUserId ? handleUpdateUser() : handleAddUser();
+    } else {
+      message.error("Please fill out all fields");
+    }
+  };
 
   const handleAddUser = () => {
     const dataRef = ref(database, "posts");
@@ -157,7 +169,7 @@ function Posts() {
       </div>
 
       {showModal && (
-        <div>
+        <form onSubmit={handleValidation}>
           <div className="modal mb100">
             <div className="modal-content">
               <span className="close" onClick={handleCloseModal}></span>
@@ -174,11 +186,12 @@ function Posts() {
               <input type="text" placeholder="salary" value={value} onChange={(e) => setValue(e.target.value)} />
               <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
               <input type="text" placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-              {selectedUserId ? <button onClick={handleUpdateUser}>Update Post</button> : <button onClick={handleAddUser}>Add Post</button>}
+              {/* {selectedUserId ? <button onClick={handleUpdateUser}>Update Post</button> : <button onClick={handleAddUser}>Add Post</button>} */}
+              <button type="submit">{selectedUserId ? "Update Post" : "Add Post"}</button>
             </div>
           </div>
           <div className={`overlay ${showModal ? "show" : ""}`} onClick={() => setShowModal(false)}></div>
-        </div>
+        </form>
       )}
     </>
   );
