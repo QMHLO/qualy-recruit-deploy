@@ -443,6 +443,9 @@
     width: 100%;
     max-width: 300px;
   }
+  .about-sec .address {
+    font-size: 16px;
+  }
   .req-sec {
     padding: 60px 0;
   }
