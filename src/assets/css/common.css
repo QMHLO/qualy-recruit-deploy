@@ -483,6 +483,7 @@ footer .txt {
     left: 0;
     position: absolute;
     height: 200vh;
+    opacity: 0;
   }
   header .nav-items.open {
     display: block;

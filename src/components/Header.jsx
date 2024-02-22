@@ -14,8 +14,10 @@ function Header() {
   const [showForm, setShowForm] = useState(false);
   const { adminUser, dispatch } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
-  const isTablet = window.innerWidth <= 768;
-  const isMobile = window.innerWidth <= 500;
+  // const isTablet = window.innerWidth <= 768;
+  // const isMobile = window.innerWidth <= 500;
+  const [isTablet, setIsTablet] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
 
   const logoutHandler = () => {
     setLoading(true);
@@ -54,6 +56,19 @@ function Header() {
     };
   }, [showForm]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsTablet(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 500);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const menuAnimation = {
     hidden: {
       clipPath: "circle(100px at calc(100% - 20px) 20px)",
@@ -87,7 +102,7 @@ function Header() {
                 <img src="/logo.png" alt="logo" />
               </h1>
             </Link>
-            <motion.nav className={`nav-items ${toggle ? "open" : ""}`} variants={menuAnimation} initial={isTablet ? "hidden" : ""} animate={toggle ? "visible" : ""} exit="hidden">
+            <motion.nav className={`nav-items ${toggle ? "open" : ""}`} variants={menuAnimation} initial={isTablet || isMobile ? "hidden" : ""} animate={toggle ? "visible" : ""} exit="hidden">
               <ul>
                 {!adminUser && (
                   <>
