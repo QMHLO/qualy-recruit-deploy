@@ -15,16 +15,11 @@ function App() {
     <div>
       <ToastContainer autoClose={800} theme="colored" />
       <Header />
-      {adminUser ? (
-        <Routes>
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-      ) : (
-        <Routes>
-          <Route path="/admin" element={<Login />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
-      )}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {adminUser && <Route path="/admin" element={<Admin />} />}
+        {!adminUser && <Route path="/admin" element={<Login />} />}
+      </Routes>
     </div>
   );
 }

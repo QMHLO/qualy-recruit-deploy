@@ -104,26 +104,24 @@ function Header() {
             </Link>
             <motion.nav className={`nav-items ${toggle ? "open" : ""}`} variants={menuAnimation} initial={isTablet || isMobile ? "hidden" : ""} animate={toggle ? "visible" : ""} exit="hidden">
               <ul>
-                {!adminUser && (
-                  <>
-                    <li>
-                      <a href="/#about" onClick={closeMenu}>
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/#requirement" onClick={closeMenu}>
-                        Requirement
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/#career" onClick={closeMenu}>
-                        Career
-                      </a>
-                    </li>
-                    <button onClick={() => setShowForm(true)}>Apply for a job</button>
-                  </>
-                )}
+                <>
+                  <li>
+                    <a href="/#about" onClick={closeMenu}>
+                      About
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/#requirement" onClick={closeMenu}>
+                      Requirement
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/#career" onClick={closeMenu}>
+                      Career
+                    </a>
+                  </li>
+                  <button onClick={() => setShowForm(true)}>Apply for a job</button>
+                </>
                 {adminUser && (
                   <>
                     <li>
