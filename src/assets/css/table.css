@@ -20,7 +20,7 @@
   padding: 33px 30px;
 }
 .limiter .wrap-table100 {
-  width: 1000px;
+  width: 1200px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -114,7 +114,7 @@
   text-align: center;
 }
 .limiter .row .cell:nth-child(5) {
-  width: 250px;
+  width: 600px;
 }
 .limiter .row .cell:nth-child(6) {
   text-align: center;
@@ -145,7 +145,8 @@
   transform: translateX(-50%);
   background: var(--white);
 }
-.modal input {
+.modal input,
+.modal select {
   display: block;
   width: 300px;
   padding: 10px;

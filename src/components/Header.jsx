@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import Loading from "./Loading";
+import { UserOutlined } from "@ant-design/icons";
+import { Avatar } from "antd";
 
 function Header() {
   const [toggle, setToggle] = useState(false);
@@ -118,11 +120,16 @@ function Header() {
                   </>
                 )}
                 {adminUser && (
-                  <li>
-                    <Link to={"/admin"} onClick={logoutHandler}>
-                      Logout
-                    </Link>
-                  </li>
+                  <>
+                    <li>
+                      <Link to={"/admin"} onClick={logoutHandler}>
+                        <div className="txt-center">
+                          <Avatar style={{ backgroundColor: "#87d068" }} icon={<UserOutlined />} />
+                        </div>
+                        Logout
+                      </Link>
+                    </li>
+                  </>
                 )}
               </ul>
             </motion.nav>

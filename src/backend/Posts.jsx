@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import { Modal, message } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 const database = getDatabase(app);
 
@@ -19,6 +21,8 @@ function Posts() {
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const jobOptions = ["QA Engineer", "Front-end Engineer", "Japanese Teacher", "School Admin", "Admin"];
+  const { confirm } = Modal;
 
   useEffect(() => {
     setLoading(true);
@@ -44,7 +48,7 @@ function Posts() {
       timestamp: getUnixTime(new Date()), // Add timestamp
     };
     push(dataRef, newUser);
-    toast.success("Your post was uploaded.");
+    message.success("Your post was added successfully.");
     setTitle("");
     setValue("");
     setDate("");
@@ -63,7 +67,7 @@ function Posts() {
         timestamp: getUnixTime(new Date()), // Update timestamp
       };
       update(dataRef, updatedUser);
-      toast.success("Your post was updated.");
+      message.success("Your post was updated successfully.");
       setTitle("");
       setValue("");
       setDate("");
@@ -73,32 +77,18 @@ function Posts() {
     }
   };
 
-  // const handleDeleteUser = (id) => {
-  //   // Delete user from Firebase Realtime Database
-  //   window.confirm("Are you sure want to delete this post?");
-  //   const dataRef = ref(database, `posts/${id}`);
-  //   remove(dataRef);
-  //   toast.error("Your post was deleted.");
-  // };
   const handleDeleteUser = (id) => {
-    confirmAlert({
+    confirm({
       title: "Are you sure to delete this post?",
-      message: "",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () => {
-            // Delete user from Firebase Realtime Database
-            const dataRef = ref(database, `posts/${id}`);
-            remove(dataRef);
-            toast.error("Your post was deleted.");
-          },
-        },
-        {
-          label: "No",
-          onClick: () => {},
-        },
-      ],
+      icon: <ExclamationCircleOutlined />,
+      content: "",
+      onOk() {
+        // Delete user from Firebase Realtime Database
+        const dataRef = ref(database, `posts/${id}`);
+        remove(dataRef);
+        message.success("Your post was deleted.");
+      },
+      onCancel() {},
     });
   };
 
@@ -171,10 +161,19 @@ function Posts() {
           <div className="modal mb100">
             <div className="modal-content">
               <span className="close" onClick={handleCloseModal}></span>
-              <input type="text" placeholder="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-              <input type="text" placeholder="value" value={value} onChange={(e) => setValue(e.target.value)} />
+              <select placeholder="title" value={title} onChange={(e) => setTitle(e.target.value)}>
+                <option value="" disabled>
+                  Choose Position
+                </option>
+                {jobOptions.map((position, index) => (
+                  <option key={index} value={position}>
+                    {position}
+                  </option>
+                ))}
+              </select>
+              <input type="text" placeholder="salary" value={value} onChange={(e) => setValue(e.target.value)} />
               <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-              <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+              <input type="text" placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} />
               {selectedUserId ? <button onClick={handleUpdateUser}>Update Post</button> : <button onClick={handleAddUser}>Add Post</button>}
             </div>
           </div>
