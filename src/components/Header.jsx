@@ -12,9 +12,10 @@ import { Avatar } from "antd";
 function Header() {
   const [toggle, setToggle] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const { adminUser, dispatch } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const isTablet = window.innerWidth <= 768;
+  const isMobile = window.innerWidth <= 500;
 
   const logoutHandler = () => {
     setLoading(true);
@@ -53,17 +54,6 @@ function Header() {
     };
   }, [showForm]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   const menuAnimation = {
     hidden: {
       clipPath: "circle(100px at calc(100% - 20px) 20px)",
@@ -97,7 +87,7 @@ function Header() {
                 <img src="/logo.png" alt="logo" />
               </h1>
             </Link>
-            <motion.nav className={`nav-items ${toggle ? "open" : ""}`} variants={menuAnimation} initial={isMobile ? "hidden" : ""} animate={toggle ? "visible" : ""} exit="hidden">
+            <motion.nav className={`nav-items ${toggle ? "open" : ""}`} variants={menuAnimation} initial={isTablet ? "hidden" : ""} animate={toggle ? "visible" : ""} exit="hidden">
               <ul>
                 {!adminUser && (
                   <>
