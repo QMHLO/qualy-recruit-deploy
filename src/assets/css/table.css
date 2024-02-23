@@ -125,6 +125,7 @@
 .limiter .table,
 .limiter .row {
   width: 100% !important;
+  text-align: center;
 }
 .limiter .row:hover {
   background-color: #ececff;
