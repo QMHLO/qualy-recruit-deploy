@@ -115,6 +115,7 @@
 }
 .limiter .row .cell:nth-child(5) {
   width: 600px;
+  text-align: left;
 }
 .limiter .row .cell:nth-child(6) {
   text-align: center;
