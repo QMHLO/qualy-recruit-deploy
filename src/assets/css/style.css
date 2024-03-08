@@ -136,6 +136,15 @@
   padding-bottom: 15px;
   position: relative;
   border-bottom: 1px solid var(--white);
+  position: relative;
+}
+.req-sec .job-card .card-ttl .arrow{
+  position: absolute;
+  z-index: 10;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  right: 15px;
 }
 .req-sec .job-card .card-ttl:after {
   content: "";

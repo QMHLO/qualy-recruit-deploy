@@ -14,7 +14,7 @@ function Home() {
       <AboutSection />
       <RequirmentSection />
       <CareerSection />
-      <InterviewSection />
+      {/* <InterviewSection /> */}
       <SnsSection />
       <ToTopBtn />
     </>

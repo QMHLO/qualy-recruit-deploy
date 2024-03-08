@@ -13,24 +13,24 @@ function Sns() {
   };
   const facebookData = [
     {
-      link: "#",
+      link: "https://www.facebook.com/qualymm/",
       src: "/qm.png",
       alt: "QMFacebookの画像",
     },
     {
-      link: "#",
+      link: "https://www.facebook.com/JapanTrainingCentre",
       src: "/jtcm.png",
       alt: "JTCMFacebookの画像",
     },
     {
-      link: "#",
+      link: "https://www.facebook.com/jtcmandalay",
       src: "/jtco.png",
       alt: "JTCOFacebookの画像",
     },
   ];
   const linkedinData = [
     {
-      link: "#",
+      link: "https://www.linkedin.com/company/qualy-myanmar",
       src: "/qm.png",
       alt: "QMLinkedの画像",
     },

@@ -148,9 +148,9 @@ function Posts() {
                 <div className="row" key={user.id}>
                   <div className="cell">{count++}</div>
                   <div className="cell">{user.title}</div>
-                  <div className="cell"> {user.value}</div>
-                  <div className="cell"> {user.date}</div>
-                  <div className="cell"> {user.description}</div>
+                  <div className="cell">{user.value}</div>
+                  <div className="cell">{user.date}</div>
+                  <div className="cell">{user.description}</div>
                   <div className="cell">
                     <Flex gap="small" justify="center">
                       <Button type="primary" onClick={() => handleSelectUser(user)}>

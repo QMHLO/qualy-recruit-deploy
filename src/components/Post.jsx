@@ -27,11 +27,11 @@ function CompanyData() {
     <div className="jobs-list">
       {data.map((post) => (
         <div className="job-card" key={post.id}>
-          <h4 className="card-ttl">{post.title}</h4>
+          <h4 className="card-ttl">{post.title} (2Posts)<span className="arrow"></span></h4>
           <div className="desc">
             <div className="left">
               <span>Full-time employee</span>
-              <span>MMK　{post.value}〜</span>
+              <span>$ {post.value}〜</span>
             </div>
             <div className="right">
               {/* Recruitment deadline<span className="date">{format(new Date(post.date), "yyyy.M.dd")}</span> */}
