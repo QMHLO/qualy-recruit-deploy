@@ -27,7 +27,7 @@ function CompanyData() {
     <div className="jobs-list">
       {data.map((post) => (
         <div className="job-card" key={post.id}>
-          <h4 className="card-ttl">{post.title} (2Posts)<span className="arrow"></span></h4>
+          <h4 className="card-ttl">{post.title} ({post.hirePerson}-Post{post.hirePerson>1?"s":""})<span className="arrow"></span></h4>
           <div className="desc">
             <div className="left">
               <span>Full-time employee</span>

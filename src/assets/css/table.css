@@ -106,7 +106,7 @@
   width: 100px;
 }
 .limiter .row .cell:nth-child(3) {
-  width: 100px;
+  width: 150px;
   text-align: center;
 }
 .limiter .row .cell:nth-child(4) {
@@ -114,10 +114,11 @@
   text-align: center;
 }
 .limiter .row.header .cell:nth-child(5) {
+  width: 180px;
   text-align: center;
 }
-.limiter .row .cell:nth-child(5) {
-  width: 600px;
+.limiter .row .cell:nth-child(6) {
+  width: 500px;
   text-align: left;
 }
 .limiter .row .cell:nth-child(6) {
@@ -143,7 +144,7 @@
   position: fixed;
   left: 50%;
   top: 20%;
-  max-width: 400px;
+  max-width: 500px;
   width: 70%;
   z-index: 200;
   height: fit-content;
@@ -151,14 +152,15 @@
   background: var(--white);
 }
 .modal input,
-.modal select {
+.modal select,
+.modal textarea {
   display: block;
-  width: 300px;
+  width: 400px;
   padding: 10px;
   margin-bottom: 20px;
 }
 .modal-content {
-  max-width: 300px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 50px 0 20px;
 }

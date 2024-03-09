@@ -1,8 +1,13 @@
-export default function ValidationAdmin({ title, value, date, description }) {
+export default function ValidationAdmin({ title, hirePerson, value, date, description }) {
   const errors = {};
   if (title === "") {
     errors.title = "Title is required";
   }
+
+  if(hirePerson ===""){
+    errors.value = "HirePerson is required";
+  }
+
   if (value === "") {
     errors.value = "Salary is required";
   }

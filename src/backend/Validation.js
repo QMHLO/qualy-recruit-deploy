@@ -14,8 +14,16 @@ export default function Validation({ formData }) {
     errors.emailAddress = "This email address is incorrect or invalid";
   }
 
+  if (formData.phNumber === "") {
+    errors.phNumber = "Phone Number is Required";
+  }
+
   if (formData.selectedPosition === "") {
     errors.selectedPosition = "Please select a position";
+  }
+
+  if (formData.shiftSystem === "") {
+    errors.shiftSystem = "Please select a Shift System";
   }
 
   if (formData.cv === "") {

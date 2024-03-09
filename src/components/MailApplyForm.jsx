@@ -6,17 +6,22 @@ function MailApplyForm({ closeForm }) {
   const [formData, setFormData] = useState({
     fullName: "",
     emailAddress: "",
+    phNumber: "",
     selectedPosition: "",
+    shiftSystem: "",
     cv: "",
   });
   const [errors, setErrors] = useState({});
   const jobOptions = ["QA Engineer", "Front-end Engineer", "Japanese Teacher", "School Admin", "Admin"];
+  const shiftOptions = ["Monday To Friday", "Tuesday To Saturday", "Other"];
 
   const sendEmail = async () => {
     let fd = new FormData();
     fd.append("fullName", formData.fullName);
+    fd.append("phNumber", formData.phNumber);
     fd.append("emailAddress", formData.emailAddress);
     fd.append("selectedPosition", formData.selectedPosition);
+    fd.append("shiftSystem", formData.shiftSystem);
     fd.append("cv", formData.cv);
 
     try {
@@ -81,6 +86,11 @@ function MailApplyForm({ closeForm }) {
             <input type="text" id="emailAddress" name="emailAddress" value={formData.emailAddress} onChange={handleInputChange} />
             {errors.emailAddress && <span className="error-txt">{errors.emailAddress}</span>}
           </div>
+          <div className="row">
+            <label htmlFor="phNumber">Your Phone Number *</label>
+            <input type="number" id="phNumber" name="phNumber" value={formData.phNumber} onChange={handleInputChange} />
+            {errors.phNumber && <span className="error-txt">{errors.phNumber}</span>}
+          </div>
           <div className="row ">
             <label htmlFor="selectedPosition">Which position are you interested in? *</label>
             <select id="selectedPosition" name="selectedPosition" value={formData.selectedPosition} onChange={handleInputChange}>
@@ -94,6 +104,20 @@ function MailApplyForm({ closeForm }) {
               ))}
             </select>
             {errors.selectedPosition && <span className="error-txt">{errors.selectedPosition}</span>}
+          </div>
+          <div className="row ">
+            <label htmlFor="shiftSystem">Select your preferred shift *</label>
+            <select id="shiftSystem" name="shiftSystem" value={formData.shiftSystem} onChange={handleInputChange}>
+              <option value="" disabled>
+                Select
+              </option>
+              {shiftOptions.map((shift, index) => (
+                <option key={index} value={shift}>
+                  {shift}
+                </option>
+              ))}
+            </select>
+            {errors.shiftSystem && <span className="error-txt">{errors.shiftSystem}</span>}
           </div>
           <div className="row mb50 mb30-sp">
             <label htmlFor="cvv">Upload Your CV File *</label>

@@ -16,6 +16,7 @@ const database = getDatabase(app);
 function Posts() {
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
+  const [hirePerson, setHirePerson] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [data, setData] = useState([]);
@@ -41,7 +42,7 @@ function Posts() {
 
   const handleValidation = (e) => {
     e.preventDefault();
-    const validationErrors = ValidationAdmin({ title, value, date, description });
+    const validationErrors = ValidationAdmin({ title, hirePerson, value, date, description });
     if (Object.keys(validationErrors).length === 0) {
       // If no validation errors, send the email
       selectedUserId ? handleUpdateUser() : handleAddUser();
@@ -54,6 +55,7 @@ function Posts() {
     const dataRef = ref(database, "posts");
     const newUser = {
       title: title,
+      hirePerson: hirePerson,
       value: value,
       date: date,
       description: description,
@@ -62,6 +64,7 @@ function Posts() {
     push(dataRef, newUser);
     message.success("Your post was added successfully.");
     setTitle("");
+    setHirePerson("");
     setValue("");
     setDate("");
     setDescription("");
@@ -73,6 +76,7 @@ function Posts() {
       const dataRef = ref(database, `posts/${selectedUserId}`);
       const updatedUser = {
         title: title,
+        hirePerson: hirePerson,
         value: value,
         date: date,
         description: description,
@@ -81,6 +85,7 @@ function Posts() {
       update(dataRef, updatedUser);
       message.success("Your post was updated successfully.");
       setTitle("");
+      setHirePerson("");
       setValue("");
       setDate("");
       setDescription("");
@@ -106,6 +111,7 @@ function Posts() {
 
   const handleSelectUser = (user) => {
     setTitle(user.title);
+    setHirePerson(user.hirePerson);
     setValue(user.value);
     setDate(user.date);
     setDescription(user.description);
@@ -116,6 +122,7 @@ function Posts() {
   const handleCloseModal = () => {
     setShowModal(false);
     setTitle("");
+    setHirePerson("");
     setValue("");
     setDate("");
     setDescription("");
@@ -139,6 +146,7 @@ function Posts() {
               <div className="row header">
                 <div className="cell">No</div>
                 <div className="cell">Title</div>
+                <div className="cell">Person</div>
                 <div className="cell">Salary</div>
                 <div className="cell">Date</div>
                 <div className="cell">Description</div>
@@ -148,6 +156,7 @@ function Posts() {
                 <div className="row" key={user.id}>
                   <div className="cell">{count++}</div>
                   <div className="cell">{user.title}</div>
+                  <div className="cell">{user.hirePerson}</div>
                   <div className="cell">{user.value}</div>
                   <div className="cell">{user.date}</div>
                   <div className="cell">{user.description}</div>
@@ -183,9 +192,10 @@ function Posts() {
                   </option>
                 ))}
               </select>
-              <input type="text" placeholder="salary" value={value} onChange={(e) => setValue(e.target.value)} />
+              <input type="number" placeholder="Hire Person" value={hirePerson} onChange={(e) => setHirePerson(e.target.value)} />
+              <input type="number" placeholder="Salary" value={value} onChange={(e) => setValue(e.target.value)} />
               <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-              <input type="text" placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+              <textarea cols="20" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
               {/* {selectedUserId ? <button onClick={handleUpdateUser}>Update Post</button> : <button onClick={handleAddUser}>Add Post</button>} */}
               <button type="submit">{selectedUserId ? "Update Post" : "Add Post"}</button>
             </div>
