@@ -23,12 +23,32 @@ function SliderAbout() {
       alt: "img01の画像",
     },
     {
-      src: "/qm.png",
+      src: "/slider_img02.png",
       alt: "img02の画像",
     },
     {
-      src: "/jtcm.png",
+      src: "/slider_img03.png",
       alt: "img03の画像",
+    },
+    {
+      src: "/slider_img04.png",
+      alt: "img04の画像",
+    },
+    {
+      src: "/slider_img05.png",
+      alt: "img05の画像",
+    },
+    {
+      src: "/slider_img06.png",
+      alt: "img06の画像",
+    },
+    {
+      src: "/slider_img07.png",
+      alt: "img07の画像",
+    },
+    {
+      src: "/slider_img08.png",
+      alt: "img08の画像",
     },
   ];
   return (
