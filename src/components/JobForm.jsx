@@ -11,7 +11,11 @@ function JobForm({ closeForm }) {
         <div className="contents">
           <div className="top">
             <h3>Apply For a job</h3>
-            <p>texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext</p>
+            <p>
+              Job applicants will be responded to by email.
+              <br />
+              Thank you.
+            </p>
             <p className="notice-txt">* MANDATORY FIELDS</p>
           </div>
           <div className="bottom">
