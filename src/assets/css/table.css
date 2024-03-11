@@ -143,7 +143,7 @@
 .modal {
   position: fixed;
   left: 50%;
-  top: 20%;
+  top: 6%;
   max-width: 500px;
   width: 70%;
   z-index: 200;
@@ -231,6 +231,17 @@
   .limiter .cell {
     width: 100% !important;
     text-align: center;
+  }
+  .modal-content {
+    max-width: 300px;
+  }
+  .modal input,
+  .modal select,
+  .modal textarea {
+    display: block;
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
   }
 }
 .ant-table-cell {

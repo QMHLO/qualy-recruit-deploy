@@ -3,10 +3,43 @@ import { useState, useEffect } from "react";
 import { getDatabase, ref, onValue, push, update, remove } from "firebase/database";
 import { app } from "../firebase";
 import { format } from "date-fns"; // Import format function from date-fns
+import JobForm from "./JobForm";
+import { motion, AnimatePresence } from "framer-motion";
 const database = getDatabase(app);
 
 function CompanyData() {
   const [data, setData] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+  const [isTablet, setIsTablet] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
+  const closeForm = () => {
+    setShowForm(false);
+  };
+
+  useEffect(() => {
+    if (showForm) {
+      document.body.classList.add("fixed");
+    } else {
+      document.body.classList.remove("fixed");
+    }
+    // Cleanup on component unmount
+    return () => {
+      document.body.classList.remove("fixed");
+    };
+  }, [showForm]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsTablet(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 500);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     // Fetch data from Firebase Realtime Database
@@ -27,7 +60,10 @@ function CompanyData() {
     <div className="jobs-list">
       {data.map((post) => (
         <div className="job-card" key={post.id}>
-          <h4 className="card-ttl">{post.title} ({post.hirePerson}-Post{post.hirePerson>1?"s":""})<span className="arrow"></span></h4>
+          <h4 className="card-ttl">
+            {post.title}
+            <br className="sp" /> ({post.hirePerson}-Post{post.hirePerson > 1 ? "s" : ""})<span onClick={() => setShowForm(true)} className="arrow"></span>
+          </h4>
           <div className="desc">
             <div className="left">
               <span>Full-time employee</span>
@@ -41,6 +77,24 @@ function CompanyData() {
           <p className="detail">{post.description}</p>
         </div>
       ))}
+      <AnimatePresence>
+        {showForm && (
+          <motion.div
+            className="job-form"
+            initial={{ x: isMobile ? 400 : 800 }}
+            animate={{ x: 0 }}
+            exit={{ x: isMobile ? 400 : 800 }}
+            transition={{
+              duration: isMobile ? 0.6 : 0.5,
+              type: "tween",
+              ease: "easeInOut",
+            }}
+          >
+            <JobForm closeForm={closeForm} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <div className={`overlay ${showForm ? "show" : ""}`} onClick={() => setShowForm(false)}></div>
     </div>
   );
 }

@@ -137,8 +137,9 @@
   position: relative;
   border-bottom: 1px solid var(--white);
   position: relative;
+  line-height: 1.2;
 }
-.req-sec .job-card .card-ttl .arrow{
+.req-sec .job-card .card-ttl .arrow {
   position: absolute;
   z-index: 10;
   width: 35px;

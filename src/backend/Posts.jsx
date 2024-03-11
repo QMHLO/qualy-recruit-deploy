@@ -194,8 +194,8 @@ function Posts() {
               </select>
               <input type="number" placeholder="Hire Person" value={hirePerson} onChange={(e) => setHirePerson(e.target.value)} />
               <input type="number" placeholder="Salary" value={value} onChange={(e) => setValue(e.target.value)} />
-              <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-              <textarea cols="20" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
+              <input type="date" placeholder="Salary" value={date} onChange={(e) => setDate(e.target.value)} />
+              <textarea rows="5" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
               {/* {selectedUserId ? <button onClick={handleUpdateUser}>Update Post</button> : <button onClick={handleAddUser}>Add Post</button>} */}
               <button type="submit">{selectedUserId ? "Update Post" : "Add Post"}</button>
             </div>
