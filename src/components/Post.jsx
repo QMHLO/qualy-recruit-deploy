@@ -62,7 +62,7 @@ function CompanyData() {
         <div className="job-card" key={post.id}>
           <h4 className="card-ttl">
             {post.title}
-            <br className="sp" /> ({post.hirePerson}-Post{post.hirePerson > 1 ? "s" : ""})<span onClick={() => setShowForm(true)} className="arrow"></span>
+            <br className="sp" /> ({post.gender} - {post.hirePerson} Post{post.hirePerson > 1 ? "s" : ""})<span onClick={() => setShowForm(true)} className="arrow"></span>
           </h4>
           <div className="desc">
             <div className="left">

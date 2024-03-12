@@ -114,11 +114,15 @@
   text-align: center;
 }
 .limiter .row.header .cell:nth-child(5) {
+  width: 150px;
+  text-align: center;
+}
+.limiter .row.header .cell:nth-child(6) {
   width: 180px;
   text-align: center;
 }
-.limiter .row .cell:nth-child(6) {
-  width: 500px;
+.limiter .row .cell:nth-child(7) {
+  width: 400px;
   text-align: left;
 }
 .limiter .row .cell:nth-child(6) {

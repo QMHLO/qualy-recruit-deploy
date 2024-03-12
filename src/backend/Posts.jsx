@@ -17,6 +17,7 @@ function Posts() {
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
   const [hirePerson, setHirePerson] = useState("");
+  const [gender, setGender] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [data, setData] = useState([]);
@@ -24,6 +25,7 @@ function Posts() {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const jobOptions = ["QA Engineer", "Front-end Engineer", "Japanese Teacher", "School Admin", "Admin"];
+  const genderOptions = ["Male", "Female", "Male/Female"];
   const { confirm } = Modal;
 
   useEffect(() => {
@@ -42,7 +44,7 @@ function Posts() {
 
   const handleValidation = (e) => {
     e.preventDefault();
-    const validationErrors = ValidationAdmin({ title, hirePerson, value, date, description });
+    const validationErrors = ValidationAdmin({ title, hirePerson, gender, value, date, description });
     if (Object.keys(validationErrors).length === 0) {
       // If no validation errors, send the email
       selectedUserId ? handleUpdateUser() : handleAddUser();
@@ -56,6 +58,7 @@ function Posts() {
     const newUser = {
       title: title,
       hirePerson: hirePerson,
+      gender: gender,
       value: value,
       date: date,
       description: description,
@@ -65,6 +68,7 @@ function Posts() {
     message.success("Your post was added successfully.");
     setTitle("");
     setHirePerson("");
+    setGender("");
     setValue("");
     setDate("");
     setDescription("");
@@ -77,6 +81,7 @@ function Posts() {
       const updatedUser = {
         title: title,
         hirePerson: hirePerson,
+        gender: gender,
         value: value,
         date: date,
         description: description,
@@ -86,6 +91,7 @@ function Posts() {
       message.success("Your post was updated successfully.");
       setTitle("");
       setHirePerson("");
+      setGender("");
       setValue("");
       setDate("");
       setDescription("");
@@ -112,6 +118,7 @@ function Posts() {
   const handleSelectUser = (user) => {
     setTitle(user.title);
     setHirePerson(user.hirePerson);
+    setGender(user.gender);
     setValue(user.value);
     setDate(user.date);
     setDescription(user.description);
@@ -123,6 +130,7 @@ function Posts() {
     setShowModal(false);
     setTitle("");
     setHirePerson("");
+    setGender("");
     setValue("");
     setDate("");
     setDescription("");
@@ -147,6 +155,7 @@ function Posts() {
                 <div className="cell">No</div>
                 <div className="cell">Title</div>
                 <div className="cell">Person</div>
+                <div className="cell">Gender</div>
                 <div className="cell">Salary</div>
                 <div className="cell">Date</div>
                 <div className="cell">Description</div>
@@ -157,6 +166,7 @@ function Posts() {
                   <div className="cell">{count++}</div>
                   <div className="cell">{user.title}</div>
                   <div className="cell">{user.hirePerson}</div>
+                  <div className="cell">{user.gender}</div>
                   <div className="cell">{user.value}</div>
                   <div className="cell">{user.date}</div>
                   <div className="cell">{user.description}</div>
@@ -193,6 +203,16 @@ function Posts() {
                 ))}
               </select>
               <input type="number" placeholder="Hire Person" value={hirePerson} onChange={(e) => setHirePerson(e.target.value)} />
+              <select placeholder="gender" value={gender} onChange={(e) => setGender(e.target.value)}>
+                <option value="" disabled>
+                  Choose Gender
+                </option>
+                {genderOptions.map((gen, index) => (
+                  <option key={index} value={gen}>
+                    {gen}
+                  </option>
+                ))}
+              </select>
               <input type="number" placeholder="Salary" value={value} onChange={(e) => setValue(e.target.value)} />
               <input type="date" placeholder="Salary" value={date} onChange={(e) => setDate(e.target.value)} />
               <textarea rows="5" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
