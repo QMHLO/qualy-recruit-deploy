@@ -312,5 +312,5 @@
 }
 .ql-editor {
   height: 150px !important;
-  overflow: scroll;
+  overflow-y: scroll;
 }
