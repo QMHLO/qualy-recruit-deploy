@@ -307,3 +307,10 @@
     width: 90%;
   }
 }
+.ql-toolbar.ql-snow {
+  display: none !important;
+}
+.ql-editor {
+  height: 150px !important;
+  overflow: scroll;
+}

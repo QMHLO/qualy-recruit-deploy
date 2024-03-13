@@ -10,6 +10,8 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { Modal, message } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import ValidationAdmin from "./ValidationAdmin";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const database = getDatabase(app);
 
@@ -27,6 +29,10 @@ function Posts() {
   const jobOptions = ["QA Engineer", "Front-end Engineer", "Japanese Teacher", "School Admin", "Admin"];
   const genderOptions = ["Male", "Female", "Male/Female"];
   const { confirm } = Modal;
+
+  const handleChange = (html) => {
+    setDescription(html);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -215,8 +221,10 @@ function Posts() {
               </select>
               <input type="number" placeholder="Salary" value={value} onChange={(e) => setValue(e.target.value)} />
               <input type="date" placeholder="Salary" value={date} onChange={(e) => setDate(e.target.value)} />
-              <textarea rows="5" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
+              {/* <textarea rows="5" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} /> */}
               {/* {selectedUserId ? <button onClick={handleUpdateUser}>Update Post</button> : <button onClick={handleAddUser}>Add Post</button>} */}
+              {/* <ReactQuill theme="snow" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" /> */}
+              <ReactQuill theme="snow" value={description} onChange={handleChange} placeholder="Write something..." />
               <button type="submit">{selectedUserId ? "Update Post" : "Add Post"}</button>
             </div>
           </div>

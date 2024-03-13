@@ -74,7 +74,8 @@ function CompanyData() {
               Recruitment deadline<span className="date">{post.date}</span>
             </div>
           </div>
-          <p className="detail">{post.description}</p>
+          {/* <p className="detail">{post.description}</p> */}
+          <p className="detail" dangerouslySetInnerHTML={{ __html: post.description }}></p>
         </div>
       ))}
       <AnimatePresence>
