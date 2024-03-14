@@ -175,7 +175,8 @@ function Posts() {
                   <div className="cell">{user.gender}</div>
                   <div className="cell">{user.value}</div>
                   <div className="cell">{user.date}</div>
-                  <div className="cell">{user.description}</div>
+                  <div className="cell" dangerouslySetInnerHTML={{ __html: user.description }}></div>
+
                   <div className="cell">
                     <Flex gap="small" justify="center">
                       <Button type="primary" onClick={() => handleSelectUser(user)}>
@@ -223,7 +224,6 @@ function Posts() {
               <input type="date" placeholder="Salary" value={date} onChange={(e) => setDate(e.target.value)} />
               {/* <textarea rows="5" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} /> */}
               {/* {selectedUserId ? <button onClick={handleUpdateUser}>Update Post</button> : <button onClick={handleAddUser}>Add Post</button>} */}
-              {/* <ReactQuill theme="snow" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" /> */}
               <ReactQuill theme="snow" value={description} onChange={handleChange} placeholder="Write something..." />
               <button type="submit">{selectedUserId ? "Update Post" : "Add Post"}</button>
             </div>

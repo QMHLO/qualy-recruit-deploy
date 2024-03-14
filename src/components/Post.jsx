@@ -75,7 +75,7 @@ function CompanyData() {
             </div>
           </div>
           {/* <p className="detail">{post.description}</p> */}
-          <p className="detail" dangerouslySetInnerHTML={{ __html: post.description }}></p>
+          <div className="detail" dangerouslySetInnerHTML={{ __html: post.description }}></div>
         </div>
       ))}
       <AnimatePresence>
