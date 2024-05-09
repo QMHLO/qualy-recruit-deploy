@@ -10,6 +10,8 @@ import Login from "./components/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Loading from "./components/Loading";
+import InterviewSingle from "./page/InterviewSingle";
+import Error from "./components/Error";
 
 function App() {
   const { adminUser } = React.useContext(AuthContext);
@@ -34,8 +36,10 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/interview/:id" element={<InterviewSingle />} />
             {adminUser && <Route path="/admin" element={<Admin />} />}
             {!adminUser && <Route path="/admin" element={<Login />} />}
+            <Route path="*" element={<Error />} />
           </Routes>
           <Footer />
         </>

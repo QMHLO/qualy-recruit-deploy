@@ -6,61 +6,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import SwipperButtons from "./SwipperButtons";
 import Interviewer from "./Interviewer";
+import interviewerData from "../backend/InterviewData";
 
 function SwipperEmployee() {
-  const interviewerData = [
-    {
-      no: "Interview01",
-      src: "/interview01.png",
-      alt: "interview01の画像",
-      position: "QA Engineer",
-      name: "Namenamenamenamename",
-      date: "(Joined in 2019)",
-    },
-    {
-      no: "Interview02",
-      src: "/interview02.png",
-      alt: "interview02の画像",
-      position: "QA Engineer",
-      name: "Namenamenamenamename",
-      date: "(Joined in 2019)",
-    },
-    {
-      no: "Interview03",
-      src: "/interview03.png",
-      alt: "interview03の画像",
-      position: "QA Engineer",
-      name: "Namenamenamenamename",
-      date: "(Joined in 2019)",
-    },
-    {
-      no: "Interview04",
-      src: "/interview01.png",
-      alt: "interview01の画像",
-      position: "QA Engineer",
-      name: "Namenamenamenamename",
-      date: "(Joined in 2019)",
-    },
-    {
-      no: "Interview05",
-      src: "/interview02.png",
-      alt: "interview02の画像",
-      position: "QA Engineer",
-      name: "Namenamenamenamename",
-      date: "(Joined in 2019)",
-    },
-    {
-      no: "Interview06",
-      src: "/interview03.png",
-      alt: "interview03の画像",
-      position: "QA Engineer",
-      name: "Namenamenamenamename",
-      date: "(Joined in 2019)",
-    },
-  ];
   return (
     <div className="slider-block">
       <h3 className="sec-ttl mb30">
@@ -90,9 +41,13 @@ function SwipperEmployee() {
               spaceBetween: 40,
             },
           }}
-          modules={[Pagination, Navigation]}
+          modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper"
           loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           centeredSlides={true}
         >
           {interviewerData.map((user, index) => (

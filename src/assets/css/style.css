@@ -274,6 +274,9 @@
 .interview-sec .slider-block .item {
   position: relative;
 }
+.interview-sec .slider-block a:hover {
+  opacity: 1;
+}
 .interview-sec .slider-block .item .txt {
   position: absolute;
   z-index: 3;
@@ -384,7 +387,82 @@
   align-items: center;
   justify-content: center;
 }
-
+.interview-single {
+  padding-top: 170px;
+}
+.interview-single .member-top-div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.interview-single .member-top-left h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.interview-single .member-top-right {
+  text-align: right;
+  padding-top: 40px;
+}
+.interview-single .member-top-right .member-name {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 0.8;
+  margin: 20px 0;
+}
+.interview-single .member-top-right .member-join-date {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+.interview-single .member-join-date span.member-position {
+  margin-right: 15px;
+}
+.interview-single .member-photo {
+  width: 100%;
+  height: 460px;
+  margin: 50px 0;
+}
+.interview-single .member-photo2 {
+  margin: 50px 0;
+}
+.interview-single .member-photo img,
+.interview-single .member-photo2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.interview-single .ques-card {
+  margin-bottom: 50px;
+}
+.interview-single .member-question {
+  color: #016c1c;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 60px;
+}
+.interview-single .member-question:before {
+  content: "——";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: sans-serif;
+  letter-spacing: -1px;
+}
+.interview-single .member-answer {
+  margin-top: 20px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.8;
+}
+.interview-single .member-about p {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: #016c1c;
+  margin-bottom: 50px;
+}
 /* Interview */
 
 /* Sns */
@@ -526,5 +604,44 @@
   .sns-sec .row li {
     max-width: 300px;
     margin: 0 auto;
+  }
+  .interview-single {
+    padding-top: 100px;
+  }
+  .interview-single .member-top-div {
+    grid-template-columns: 1fr;
+  }
+  .interview-single .member-top-right {
+    text-align: left;
+    padding-top: 0px;
+  }
+  .interview-single .member-top-left h2 {
+    font-size: 2.3rem;
+  }
+  .interview-single .member-top-right .member-name {
+    font-size: 1.5rem;
+    margin: 18px 0 10px 0;
+  }
+  .interview-single .member-top-right .member-join-date {
+    font-size: 1rem;
+  }
+  .interview-single .member-photo,
+  .interview-single .member-photo2 {
+    height: auto;
+    margin: 20px 0;
+  }
+  .interview-single .member-about p {
+    margin-bottom: 20px;
+  }
+  .interview-single .member-question {
+    font-size: 1.2rem;
+    padding-left: 45px;
+  }
+  .interview-single .member-answer {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  .interview-single .ques-card {
+    margin-bottom: 25px;
   }
 }
