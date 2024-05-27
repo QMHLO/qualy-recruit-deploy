@@ -4,7 +4,7 @@ import interviewerData from "../backend/InterviewData";
 import { motion } from "framer-motion";
 import Error from "../components/Error";
 import ToTopBtn from "../components/ToTopBtn";
-import Loading from "../components/Loading"; // Import the loading component
+import Loading from "../components/Loading";
 
 function InterviewSingle() {
   const fadeUpAnimation = {
@@ -29,7 +29,7 @@ function InterviewSingle() {
   }, [id]);
 
   if (loading) {
-    return <Loading />; // Render the loading component while loading
+    return <Loading />;
   }
 
   if (!interviewer) {
