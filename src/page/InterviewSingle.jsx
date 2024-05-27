@@ -4,6 +4,7 @@ import interviewerData from "../backend/InterviewData";
 import { motion } from "framer-motion";
 import Error from "../components/Error";
 import ToTopBtn from "../components/ToTopBtn";
+import Loading from "../components/Loading"; // Import the loading component
 
 function InterviewSingle() {
   const fadeUpAnimation = {
@@ -17,11 +18,19 @@ function InterviewSingle() {
 
   const { id } = useParams();
 
-  const interviewer = interviewerData.find((interviewer) => interviewer.id === parseInt(id));
+  const [interviewer, setInterviewer] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    const foundInterviewer = interviewerData.find((interviewer) => interviewer.id === parseInt(id));
+    setInterviewer(foundInterviewer);
+    setLoading(false);
   }, [id]);
+
+  if (loading) {
+    return <Loading />; // Render the loading component while loading
+  }
 
   if (!interviewer) {
     return <Error />;
