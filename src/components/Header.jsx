@@ -120,6 +120,11 @@ function Header() {
                       Career
                     </a>
                   </li>
+                  <li>
+                    <a href="/#interview" onClick={closeMenu}>
+                      Interview
+                    </a>
+                  </li>
                   <button onClick={() => setShowForm(true)}>Apply for a job</button>
                 </>
                 {adminUser && (

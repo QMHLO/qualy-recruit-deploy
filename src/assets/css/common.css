@@ -429,6 +429,10 @@ footer .txt {
   height: 200px;
   margin-top: -200px;
 }
+.anchor.interview {
+  height: 350px;
+  margin-top: -350px;
+}
 @media screen and (max-width: 1400px) {
   header .header-container {
     padding: 30px;
@@ -443,6 +447,10 @@ footer .txt {
   .anchor.career {
     height: 70px;
     margin-top: -70px;
+  }
+  .anchor.interview {
+    height: 300px;
+    margin-top: -300px;
   }
   .career-sec .row .right .sec-ttl {
     gap: 0 10px;

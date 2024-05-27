@@ -41,17 +41,17 @@ function InterviewSingle() {
               <p className="member-name">{interviewer.name}</p>
               <p className="member-join-date">
                 <span className="member-position">{interviewer.position}</span>
-                <span className="joined-date">{interviewer.date}</span>
+                {interviewer.position2 && <span className="joined-date"> - {interviewer.position2}</span>}
+              </p>
+              <p className="member-join-date">
+                <span className="joined-date2">{interviewer.date}</span>
               </p>
             </motion.div>
           </div>
           <motion.div className="member-photo" variants={fadeUpAnimation} initial="hidden" animate="visible" exit="hidden">
-            <img src={interviewer.mv_src} alt={interviewer.alt} />
+            <img src={interviewer.mv_src1} alt={interviewer.alt} />
           </motion.div>
           <motion.div className="ques-block" variants={fadeUpAnimation} initial="hidden" animate="visible" exit="hidden">
-            <div className="member-about">
-              <p>{interviewer.about}</p>
-            </div>
             <div className="ques-card">
               <p className="member-question">{interviewer.q1}</p>
               <p className="member-answer">{interviewer.ans1}</p>
@@ -64,13 +64,13 @@ function InterviewSingle() {
               <p className="member-question">{interviewer.q3}</p>
               <p className="member-answer">{interviewer.ans3}</p>
             </div>
-            <motion.div className="member-photo2" variants={fadeUpAnimation} initial="hidden" animate="visible" exit="hidden">
-              <img src={interviewer.mv_src} alt={interviewer.alt} />
-            </motion.div>
             <div className="ques-card">
               <p className="member-question">{interviewer.q4}</p>
               <p className="member-answer">{interviewer.ans4}</p>
             </div>
+            <motion.div className="member-photo2" variants={fadeUpAnimation} initial="hidden" animate="visible" exit="hidden">
+              <img src={interviewer.mv_src2} alt={interviewer.alt} />
+            </motion.div>
             <div className="ques-card">
               <p className="member-question">{interviewer.q5}</p>
               <p className="member-answer">{interviewer.ans5}</p>
@@ -78,6 +78,10 @@ function InterviewSingle() {
             <div className="ques-card">
               <p className="member-question">{interviewer.q6}</p>
               <p className="member-answer">{interviewer.ans6}</p>
+            </div>
+            <div className="ques-card">
+              <p className="member-question">{interviewer.q7}</p>
+              <p className="member-answer">{interviewer.ans7}</p>
             </div>
           </motion.div>
         </div>

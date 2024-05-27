@@ -12,14 +12,17 @@ function Interview() {
     },
   };
   return (
-    <section className="interview-sec">
-      <div className="container">
-        <motion.div variants={fadeUpAnimation} initial="hidden" whileInView="visible" exit="hidden">
-          {/* <SliderEmployee /> */}
-          <SwipperEmployee />
-        </motion.div>
-      </div>
-    </section>
+    <>
+      <span id="interview" className="anchor interview"></span>
+      <section className="interview-sec">
+        <div className="container">
+          <motion.div variants={fadeUpAnimation} initial="hidden" whileInView="visible" exit="hidden">
+            {/* <SliderEmployee /> */}
+            <SwipperEmployee />
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }
 
