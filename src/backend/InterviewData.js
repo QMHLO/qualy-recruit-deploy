@@ -54,7 +54,7 @@ const interviewerData = [
   {
     id: 3,
     no: "Interview03",
-    src: "/hpw_capture.PNG",
+    src: "/hpw_capture.jpg",
     alt: "hpw_captureの画像",
     position: "QA Engineer",
     position2: "Team Leader",
